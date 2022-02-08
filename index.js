@@ -2,6 +2,7 @@
 // https://docs.github.com/en/actions/creating-actions/creating-a-javascript-action
 const { Octokit } = require('octokit')
 const core = require('@actions/core')
+const dayjs = require('dayjs')
 // TODO: auth
 // settings => developsettings => personal code
 // 明文token使用git actions 会失效
@@ -17,8 +18,17 @@ const octokit = new Octokit({
 octokit.rest.issues.create({
   owner: 'xjccc',
   repo: 'git-actions',
-  title: 'second issues',
-  body: '哈哈哈'
+  title: getTitle(),
+  body: getBody()
 })
 
-// 自动执行
+function getTitle () {
+  // github 上的时间 UTC - 8
+  // ? 未处理
+  return dayjs()
+    .add(8, 'hour')
+    .format('YYYY-MM-DD')
+}
+function getBody () {
+  return '[如何写每日任务](https://github.com/xjccc/git-actions/issues/1)'
+}

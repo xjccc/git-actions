@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/xjccc/git-actions#readme",
   "dependencies": {
+    "@actions/core": "^1.6.0",
     "octokit": "^1.7.1"
   },
   "devDependencies": {

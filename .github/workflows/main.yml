@@ -1,0 +1,16 @@
+on: [push]
+
+jobs:
+  create_issues:
+    runs-on: ubuntu-latest
+    name: create issues
+    steps:
+      # To use this repository's private action,
+      # you must check out the repository
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: create issues
+        uses: ./ # Uses an action in the root directory
+        # with:
+        #   who-to-greet: 'Mona the Octocat'
+    
